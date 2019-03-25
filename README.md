@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/x1nfly/php-jwt.png?branch=master)](https://travis-ci.org/x1nfly/php-jwt)
+[![Build Status](https://travis-ci.org/x1nfly/php-jwt.svg?branch=master)](https://travis-ci.org/x1nfly/php-jwt)
 [![Latest Stable Version](https://poser.pugx.org/x1nfly/jwt/v/stable)](https://packagist.org/packages/x1nfly/jwt)
 [![Total Downloads](https://poser.pugx.org/x1nfly/jwt/downloads)](https://packagist.org/packages/x1nfly/jwt)
 [![License](https://poser.pugx.org/x1nfly/jwt/license)](https://packagist.org/packages/x1nfly/jwt)
@@ -17,7 +17,7 @@ Installation
 Use composer to manage your dependencies and download PHP-JWT:
 
 ```bash
-composer require x1nfly/php-jwt
+composer require x1nfly/jwt
 ```
 
 Example
