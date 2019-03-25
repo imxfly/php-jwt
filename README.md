@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/x1nfly/php-jwt.png?branch=master)](https://travis-ci.org/x1nfly/php-jwt)
-[![Latest Stable Version](https://poser.pugx.org/x1nfly/php-jwt/v/stable)](https://packagist.org/packages/x1nfly/php-jwt)
-[![Total Downloads](https://poser.pugx.org/x1nfly/php-jwt/downloads)](https://packagist.org/packages/x1nfly/php-jwt)
-[![License](https://poser.pugx.org/x1nfly/php-jwt/license)](https://packagist.org/packages/x1nfly/php-jwt)
+[![Latest Stable Version](https://poser.pugx.org/x1nfly/jwt/v/stable)](https://packagist.org/packages/x1nfly/jwt)
+[![Total Downloads](https://poser.pugx.org/x1nfly/jwt/downloads)](https://packagist.org/packages/x1nfly/jwt)
+[![License](https://poser.pugx.org/x1nfly/jwt/license)](https://packagist.org/packages/x1nfly/jwt)
 
 PHP-JWT
 =======
