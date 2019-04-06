@@ -1,5 +1,6 @@
 <?php
-namespace X1nfly\Tests;
+
+namespace X1nfly\JWT\Tests;
 
 use X1nfly\JWT\JWT;
 use PHPUnit\Framework\TestCase;
@@ -27,7 +28,7 @@ class JWTTest extends TestCase
         $this->expectException(\Exception::class);
         $decoded = JWT::decode($encoded, null);
     }
-    
+
     public function testRSEncodeDecode()
     {
         $privKey = openssl_pkey_new([

@@ -1,4 +1,5 @@
 <?php
+
 namespace X1nfly\JWT;
 
 use \Exception;
@@ -30,7 +31,7 @@ class JWT
      *
      * @throws Exception
      */
-    public static function encode($payload, $key, $alg = 'HS256', $header = []) :string
+    public static function encode($payload, $key, $alg = 'HS256', $header = [])
     {
         $headers = ['typ' => 'JWT', 'alg' => $alg];
         if (!empty($header)) {
@@ -58,11 +59,12 @@ class JWT
     /**
      * Decodes a JWT string into a PHP object.
      *
-     * @param string        $jwt            The JWT
-     * @param string|array  $key            The key, or map of keys.
-     *                                      If the algorithm used is asymmetric, this is the public key
+     * @param string $jwt The JWT
+     * @param string|array $key The key, or map of keys.
+     *        If the algorithm used is asymmetric, this is the public key
      *
      * @return object The JWT's payload as a PHP object
+     * @throws Exception
      */
     public static function decode($jwt, $key)
     {
@@ -83,10 +85,10 @@ class JWT
             }
         }
         if (false === ($sig = static::base64UrlDecode($segs[2]))) {
-            throw new UnexpectedValueException('Invalid signature encoding');
+            throw new Exception('Invalid signature encoding', 1);
         }
 
-        if (!static::verify($segs[0].'.'.$segs[1], $sig, $key, $header->alg)) {
+        if (!static::verify($segs[0] . '.' . $segs[1], $sig, $key, $header->alg)) {
             throw new Exception("Signature verification failed", 1);
         }
 
@@ -105,10 +107,10 @@ class JWT
      * Verify a signature with the message, key and method. Not all methods
      * are symmetric, so we must have a separate verify and sign method.
      *
-     * @param string            $data        The original message (header and body)
-     * @param string            $signature  The original signature
-     * @param string|resource   $key        For HS*, a string key works. for RS*, must be a resource of an openssl public key
-     * @param string            $alg        The algorithm
+     * @param string $data The original message (header and body)
+     * @param string $signature The original signature
+     * @param string|resource $key For HS*, a string key works. for RS*, must be a resource of an openssl public key
+     * @param string $alg The algorithm
      *
      * @return bool
      *
@@ -132,7 +134,7 @@ class JWT
                 return false;
             }
             // Returns 1 if the signature is correct, 0 if it is incorrect, and -1 on error.
-            throw new DomainException('OpenSSL error: ' . openssl_error_string());
+            throw new Exception('OpenSSL error: ' . openssl_error_string());
         }
 
         return false;
@@ -141,16 +143,16 @@ class JWT
     /**
      * Sign a string with a given key and algorithm.
      *
-     * @param string            $msg    The message to sign
-     * @param string|resource   $key    The secret key
-     * @param string            $alg    The signing algorithm.
+     * @param $data
+     * @param string|resource $key The secret key
+     * @param string $alg The signing algorithm.
      *                                  Supported algorithms are 'HS256', 'HS384', 'HS512' and 'RS256'
      *
      * @return string An encrypted message
      *
      * @throws Exception
      */
-    protected static function sign($data, $key, $alg) :string
+    protected static function sign($data, $key, $alg)
     {
         if (!array_key_exists($alg, static::$algs)) {
             throw new Exception("The algorithm is not supported.", 1);
@@ -176,7 +178,7 @@ class JWT
      *
      * @return string The URL-safe base64 encode you passed in
      */
-    public static function base64UrlEncode(string $data) :string
+    public static function base64UrlEncode($data)
     {
         return str_replace('=', '', strtr(base64_encode($data), "+/", "-_"));
     }
@@ -188,7 +190,7 @@ class JWT
      *
      * @return string The URL-safe base64 decoded string
      */
-    public static function base64UrlDecode(string $data) :string
+    public static function base64UrlDecode($data)
     {
         $remainder = strlen($data) % 4;
         if ($remainder) {
