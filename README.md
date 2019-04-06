@@ -3,25 +3,25 @@
 [![Total Downloads](https://poser.pugx.org/x1nfly/jwt/downloads)](https://packagist.org/packages/x1nfly/jwt)
 [![License](https://poser.pugx.org/x1nfly/jwt/license)](https://packagist.org/packages/x1nfly/jwt)
 
-PHP-JWT
-=======
+# PHP-JWT
 🔐A basic library to encode and decode JSON Web Tokens (JWT) in PHP, conforming to [RFC 7519](https://tools.ietf.org/html/rfc7519).
 
 Notice that this project is forked from [firebase/php-jwt](https://github.com/firebase/php-jwt). So why I made a similar one?
 1. I want to learn the JWT deeply, so it's not enough that just using other's package and reading it.
 2. I want to add/change some feature, maybe it's better to collaborate with them, but as you see, I just made one :P
 
-Installation
-------------
+## Requirement
+1. PHP >= 5.6.0
+2. Openssl extension
 
+## Installation
 Use composer to manage your dependencies and download PHP-JWT:
 
 ```bash
 composer require x1nfly/jwt
 ```
 
-Example
--------
+## Example
 ```php
 <?php
 use \X1nfly\JWT\JWT;
@@ -64,8 +64,8 @@ $decoded = JWT::decode($jwt, $key, array('HS256'));
 
 ?>
 ```
-Example with RS256 (openssl)
-----------------------------
+
+## Example with RS256 (openssl)
 ```php
 <?php
 use \X1nfly\JWT\JWT;
@@ -119,8 +119,7 @@ echo "Decode:\n" . print_r($decoded_array, true) . "\n";
 ?>
 ```
 
-Tests
------
+## Tests
 Run the tests using phpunit:
 
 ```bash
@@ -132,12 +131,9 @@ Time: 0 seconds, Memory: 2.50Mb
 OK (5 tests, 5 assertions)
 ```
 
-New Lines in private keys
------
-
+## New Lines in private keys
 If your private key contains `\n` characters, be sure to wrap it in double quotes `""`
 and not single quotes `''` in order to properly interpret the escaped characters.
 
-License
--------
+## License
 [The MIT License](https://opensource.org/licenses/MIT).
