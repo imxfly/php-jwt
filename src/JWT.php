@@ -1,8 +1,8 @@
 <?php
 
-namespace X1nfly\JWT;
+namespace Imxfly\JWT;
 
-use \Exception;
+use Exception;
 
 class JWT
 {

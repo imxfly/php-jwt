@@ -1,7 +1,7 @@
-[![Build Status](https://travis-ci.org/x1nfly/php-jwt.svg?branch=master)](https://travis-ci.org/x1nfly/php-jwt)
-[![Latest Stable Version](https://poser.pugx.org/x1nfly/jwt/v/stable)](https://packagist.org/packages/x1nfly/jwt)
-[![Total Downloads](https://poser.pugx.org/x1nfly/jwt/downloads)](https://packagist.org/packages/x1nfly/jwt)
-[![License](https://poser.pugx.org/x1nfly/jwt/license)](https://packagist.org/packages/x1nfly/jwt)
+[![Build Status](https://travis-ci.org/Imxfly/php-jwt.svg?branch=master)](https://travis-ci.org/Imxfly/php-jwt)
+[![Latest Stable Version](https://poser.pugx.org/Imxfly/jwt/v/stable)](https://packagist.org/packages/Imxfly/jwt)
+[![Total Downloads](https://poser.pugx.org/Imxfly/jwt/downloads)](https://packagist.org/packages/Imxfly/jwt)
+[![License](https://poser.pugx.org/Imxfly/jwt/license)](https://packagist.org/packages/Imxfly/jwt)
 
 # PHP-JWT
 🔐A basic library to encode and decode JSON Web Tokens (JWT) in PHP, conforming to [RFC 7519](https://tools.ietf.org/html/rfc7519).
@@ -18,13 +18,13 @@ Notice that this project is forked from [firebase/php-jwt](https://github.com/fi
 Use composer to manage your dependencies and download PHP-JWT:
 
 ```bash
-composer require x1nfly/jwt
+composer require Imxfly/jwt
 ```
 
 ## Example
 ```php
 <?php
-use \X1nfly\JWT\JWT;
+use \Imxfly\JWT\JWT;
 
 $key = "example_key";
 $token = array(
@@ -68,7 +68,7 @@ $decoded = JWT::decode($jwt, $key, array('HS256'));
 ## Example with RS256 (openssl)
 ```php
 <?php
-use \X1nfly\JWT\JWT;
+use \Imxfly\JWT\JWT;
 
 $privateKey = <<<EOD
 -----BEGIN RSA PRIVATE KEY-----

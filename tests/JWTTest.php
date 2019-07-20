@@ -1,8 +1,9 @@
 <?php
 
-namespace X1nfly\JWT\Tests;
+namespace Imxfly\JWT\Tests;
 
-use X1nfly\JWT\JWT;
+use Exception;
+use Imxfly\JWT\JWT;
 use PHPUnit\Framework\TestCase;
 
 class JWTTest extends TestCase
@@ -14,7 +15,7 @@ class JWTTest extends TestCase
             "exp" => time() + 20
         ]; // time in the future
         $encoded = JWT::encode($payload, 'my_key');
-        $this->expectException(\Exception::class);
+        $this->expectException(Exception::class);
         $decoded = JWT::decode($encoded, 'my_key2');
     }
 
@@ -25,7 +26,7 @@ class JWTTest extends TestCase
             "exp" => time() + 20
         ]; // time in the future
         $encoded = JWT::encode($payload, 'my_key');
-        $this->expectException(\Exception::class);
+        $this->expectException(Exception::class);
         $decoded = JWT::decode($encoded, null);
     }
 
@@ -50,7 +51,7 @@ class JWTTest extends TestCase
             "exp" => time() + 20
         ]; // time in the future
         $encoded = JWT::encode($payload, 'my_key');
-        $this->expectException(\Exception::class);
+        $this->expectException(Exception::class);
         $decoded = JWT::decode($encoded, '');
     }
 
@@ -80,7 +81,7 @@ class JWTTest extends TestCase
 
     public function testExpiredToken()
     {
-        $this->expectException(\Exception::class);
+        $this->expectException(Exception::class);
         $payload = [
             "message" => "abc",
             "exp" => time() - 20
@@ -91,7 +92,7 @@ class JWTTest extends TestCase
 
     public function testBeforeValidTokenWithNbf()
     {
-        $this->expectException(\Exception::class);
+        $this->expectException(Exception::class);
         $payload = [
             "message" => "abc",
             "nbf" => time() + 20
@@ -114,7 +115,7 @@ class JWTTest extends TestCase
 
     public function testMalformedUtf8StringsFail()
     {
-        $this->expectException(\Exception::class);
+        $this->expectException(Exception::class);
         JWT::encode(pack('c', 128), 'a');
     }
 
