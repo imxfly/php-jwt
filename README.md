@@ -1,8 +1,3 @@
-[![Build Status](https://travis-ci.org/Imxfly/php-jwt.svg?branch=master)](https://travis-ci.org/Imxfly/php-jwt)
-[![Latest Stable Version](https://poser.pugx.org/Imxfly/jwt/v/stable)](https://packagist.org/packages/Imxfly/jwt)
-[![Total Downloads](https://poser.pugx.org/Imxfly/jwt/downloads)](https://packagist.org/packages/Imxfly/jwt)
-[![License](https://poser.pugx.org/Imxfly/jwt/license)](https://packagist.org/packages/Imxfly/jwt)
-
 # PHP-JWT
 🔐A basic library to encode and decode JSON Web Tokens (JWT) in PHP, conforming to [RFC 7519](https://tools.ietf.org/html/rfc7519).
 
@@ -18,13 +13,13 @@ Notice that this project is forked from [firebase/php-jwt](https://github.com/fi
 Use composer to manage your dependencies and download PHP-JWT:
 
 ```bash
-composer require Imxfly/jwt
+composer require imxfly/jwt
 ```
 
 ## Example
 ```php
 <?php
-use \Imxfly\JWT\JWT;
+use \imxfly\JWT\JWT;
 
 $key = "example_key";
 $token = array(
@@ -41,7 +36,7 @@ $token = array(
  * for a list of spec-compliant algorithms.
  */
 $jwt = JWT::encode($token, $key);
-$decoded = JWT::decode($jwt, $key, array('HS256'));
+$decoded = JWT::decode($jwt, $key);
 
 print_r($decoded);
 
@@ -51,24 +46,13 @@ print_r($decoded);
 */
 
 $decoded_array = (array) $decoded;
-
-/**
- * You can add a leeway to account for when there is a clock skew times between
- * the signing and verifying servers. It is recommended that this leeway should
- * not be bigger than a few minutes.
- *
- * Source: http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html#nbfDef
- */
-JWT::$leeway = 60; // $leeway in seconds
-$decoded = JWT::decode($jwt, $key, array('HS256'));
-
 ?>
 ```
 
 ## Example with RS256 (openssl)
 ```php
 <?php
-use \Imxfly\JWT\JWT;
+use imxfly\JWT\JWT;
 
 $privateKey = <<<EOD
 -----BEGIN RSA PRIVATE KEY-----
@@ -107,7 +91,7 @@ $token = array(
 $jwt = JWT::encode($token, $privateKey, 'RS256');
 echo "Encode:\n" . print_r($jwt, true) . "\n";
 
-$decoded = JWT::decode($jwt, $publicKey, array('RS256'));
+$decoded = JWT::decode($jwt, $publicKey);
 
 /*
  NOTE: This will now be an object instead of an associative array. To get
@@ -122,7 +106,7 @@ echo "Decode:\n" . print_r($decoded_array, true) . "\n";
 ## Tests
 Run the tests using phpunit:
 
-```bash
+```
 $ composer up
 $ vendor/bin/phpunit --testdox tests
 PHPUnit 3.7.10 by Sebastian Bergmann.

@@ -1,9 +1,9 @@
 <?php
 
-namespace Imxfly\JWT\Tests;
+namespace imxfly\JWT\Tests;
 
 use Exception;
-use Imxfly\JWT\JWT;
+use imxfly\JWT\JWT;
 use PHPUnit\Framework\TestCase;
 
 class JWTTest extends TestCase
@@ -16,7 +16,7 @@ class JWTTest extends TestCase
         ]; // time in the future
         $encoded = JWT::encode($payload, 'my_key');
         $this->expectException(Exception::class);
-        $decoded = JWT::decode($encoded, 'my_key2');
+        JWT::decode($encoded, 'my_key2');
     }
 
     public function testNullKeyFails()
@@ -27,7 +27,7 @@ class JWTTest extends TestCase
         ]; // time in the future
         $encoded = JWT::encode($payload, 'my_key');
         $this->expectException(Exception::class);
-        $decoded = JWT::decode($encoded, null);
+        JWT::decode($encoded, null);
     }
 
     public function testRSEncodeDecode()
@@ -52,7 +52,7 @@ class JWTTest extends TestCase
         ]; // time in the future
         $encoded = JWT::encode($payload, 'my_key');
         $this->expectException(Exception::class);
-        $decoded = JWT::decode($encoded, '');
+        JWT::decode($encoded, '');
     }
 
     public function testValidTokenWithNbf()

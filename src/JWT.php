@@ -1,6 +1,6 @@
 <?php
 
-namespace Imxfly\JWT;
+namespace imxfly\JWT;
 
 use Exception;
 
@@ -21,7 +21,7 @@ class JWT
     /**
      * Converts and signs the data into a JWT string.
      *
-     * @param object|array $payload The payload
+     * @param object|array|string $payload The payload
      * @param string $key The secret key, if the algorithm is Public-key cryptography,
      *              use the private key
      * @param string $alg The algorithm

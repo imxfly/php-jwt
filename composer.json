@@ -24,7 +24,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Imxfly\\JWT\\": "src"
+      "imxfly\\JWT\\": "src"
     }
   },
   "require-dev": {
@@ -32,7 +32,7 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "Imxfly\\JWT\\Tests\\": "tests"
+      "imxfly\\JWT\\Tests\\": "tests"
     }
   },
   "scripts": {
